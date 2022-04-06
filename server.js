@@ -9,7 +9,7 @@ var express = require('express'),
 
 // Create the bot.
 var bot = new RiveScript();
-bot.loadDirectory('../brain').then(success_handler).catch(error_handler);
+bot.loadDirectory('./brain').then(success_handler).catch(error_handler);
 
 function success_handler() {
   console.log('Brain loaded!');
