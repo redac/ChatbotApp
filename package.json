@@ -1,0 +1,25 @@
+{
+  "name": "chatbotapp",
+  "version": "1.0.0",
+  "description": "chatbot hosting/admin app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redac/ChatbotApp.git"
+  },
+  "author": "KHERMACH Reda & GERMAIN Kellian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/redac/ChatbotApp/issues"
+  },
+  "homepage": "https://github.com/redac/ChatbotApp#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.17.3",
+    "rivescript": "^2.2.0"
+  }
+}
