@@ -1,19 +1,33 @@
 //
 // Node.JS Web Server for RiveScript
 //
+import { Bot } from './models/Bot.mjs';
 
-require('babel-polyfill');
-var express = require('express'),
-  bodyParser = require('body-parser'),
-  RiveScript = require('rivescript');
+import babelpolyfill from 'babel-polyfill';
+import express from 'express';
+import bodyParser from 'body-parser';
+import RiveScript from 'rivescript';
 
 // Create the bot.
-var bot = new RiveScript();
-bot.loadDirectory('./brain').then(success_handler).catch(error_handler);
+// var bot = new RiveScript();
+// bot.loadDirectory('./brain').then(success_handler).catch(error_handler);
+var testBot = new Bot({ port: 2001 });
+var testBot2 = new Bot({ port: 2002 });
+testBot.rive
+  .loadDirectory('./brain')
+  .then(success_handler(testBot))
+  .catch(error_handler);
+console.log(testBot);
 
-function success_handler() {
+testBot2.rive
+  .loadDirectory('./brain')
+  .then(success_handler(testBot2))
+  .catch(error_handler);
+console.log(testBot);
+
+function success_handler(bot) {
   console.log('Brain loaded!');
-  bot.sortReplies();
+  bot.rive.sortReplies();
 
   // Set up the Express app.
   var app = express();
@@ -23,13 +37,14 @@ function success_handler() {
   app.set('json spaces', 4);
 
   // Set up routes.
+  //let reply = getReply(testBot)
   app.post('/reply', getReply);
   app.get('/', showUsage);
   app.get('*', showUsage);
 
   // Start listening.
-  app.listen(2001, function () {
-    console.log('Listening on http://localhost:2001');
+  app.listen(bot.port, function () {
+    console.log(`Listening on http://localhost:${bot.port}`);
   });
 }
 
@@ -53,17 +68,17 @@ function getReply(req, res) {
   if (typeof vars !== 'undefined') {
     for (var key in vars) {
       if (vars.hasOwnProperty(key)) {
-        bot.setUservar(username, key, vars[key]);
+        bot.rive.setUservar(username, key, vars[key]);
       }
     }
   }
 
   // Get a reply from the bot.
-  bot
+  bot.rive
     .reply(username, message, this)
     .then(function (reply) {
       // Get all the user's vars back out of the bot to include in the response.
-      vars = bot.getUservars(username);
+      vars = bot.rive.getUservars(username);
 
       // Send the JSON response.
       res.json({
