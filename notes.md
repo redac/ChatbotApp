@@ -14,5 +14,4 @@ une interface de communication par bot : doit permettre de lui envoyer des messa
 
 l'instance du bot sur Discord doit pouvoir partager sa mémoire avec son instance original
 
-la mise en place du bot sur Discord à son retrait doit pouvoir être fait depuis l'interface d'administration
-
+la mise en place du bot sur Discord à son retrait doit pouvoir être fait depuis l'interface d'administration.
