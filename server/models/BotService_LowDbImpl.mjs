@@ -7,7 +7,7 @@ class BotService{
 		this.db = {};
 		this.botServiceAccessPoint = botServiceAccessPoint;  //Should Check passed Values
 		this.ports = [];
-		for(let k = 3000; k < 4001; k++){
+		for(let k = 3002; k < 4001; k++){
 			this.ports.push(k);
 		}
 	}
