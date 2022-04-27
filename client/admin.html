@@ -30,15 +30,15 @@
 
 		let botListElt;
 		let modal;
-		let inputTitle;
-		let inputStatus;
+		let inputPort;
+		let inputRive;
 		let addNewbotButton;
 
 		function init(){
 			botListElt = document.getElementById("botListUL");
 			modal = document.getElementById("newbotModal");
-			inputTitle = document.getElementById("inputTitle");
-			inputStatus = document.getElementById("inputStatus");
+			inputPort = document.getElementById("inputPort");
+			inputRive = document.getElementById("inputRive");
 
 			reloadList();
 			//setInterval(reloadList,5000);
@@ -145,7 +145,7 @@
 			//Obvioulsly, you will need to launch a modal
 			let modal = document.getElementById("updatebotModal");
 			let inputPort = document.getElementById("updatePort");
-			let inputRive = document.getElementById("updateStartRive");
+			let inputRive = document.getElementById("updateRive");
 			let updatebotButton = document.getElementById("updatebotButton");
 			modal.style.display = "block";
 
@@ -234,11 +234,11 @@
 		
 		<div class="modal-content">
 			<h1>Create a new bot</h1>
-    		<label for="inputTitle">Title:</label>
+    		<label for="inputPort">Port:</label>
     		<input type="text" id="inputTitle" name="title"></input>
 
-   			<label for="inputStatus">Status:</label>
-    		<input type="text" id="inputStatus" name="status"></input>
+   			<label for="inputRive">Rive:</label>
+    		<input type="text" id="inputRive" name="rive"></input>
     		<button id="addNewbotButton">Add This bot</button>
     	</div>
     	
